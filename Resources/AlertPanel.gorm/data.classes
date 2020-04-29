@@ -1,0 +1,24 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "buttonWasPressed:"
+	);
+	Super = NSObject;
+    };
+    WMAlertPanelController = {
+	Actions = (
+	    "buttonWasPressed:"
+	);
+	Outlets = (
+	    cancelButton,
+	    iconImageView,
+	    messageTextView,
+	    window,
+	    noButton,
+	    titleTextField,
+	    yesButton
+	);
+	Super = NSObject;
+    };
+}

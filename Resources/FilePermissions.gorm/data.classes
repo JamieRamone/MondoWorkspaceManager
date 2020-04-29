@@ -1,0 +1,26 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "resetPermissions:",
+	    "okOrCancelPressed:",
+	    "permissionChanged:"
+	);
+	Super = NSObject;
+    };
+    WMFilePermissionsPanelController = {
+	Actions = (
+	    "permissionChanged:",
+	    "okOrCancelPressed:",
+	    "resetPermissions:"
+	);
+	Outlets = (
+	    window,
+	    okButton,
+	    attributesMatrix,
+	    resetButton,
+	    permissionsMatrix
+	);
+	Super = NSObject;
+    };
+}

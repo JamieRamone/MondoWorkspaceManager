@@ -1,0 +1,18 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "okButtonPressed:"
+	);
+	Super = NSObject;
+    };
+    WMInfoPanelController = {
+	Actions = (
+	    "okButtonPressed:"
+	);
+	Outlets = (
+	    panel
+	);
+	Super = NSObject;
+    };
+}

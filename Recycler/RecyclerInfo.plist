@@ -1,0 +1,6 @@
+{
+	ApplicationName = Recycler;
+	NSExecutable = Recycler;
+	NSPrincipalClass = NSApplication;
+	NSIcon = Recycler.tiff;
+}

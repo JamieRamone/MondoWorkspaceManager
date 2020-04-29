@@ -1,0 +1,29 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "fileMatrixClicked:"
+	);
+	Super = NSObject;
+    };
+    WMIconView = {
+	Actions = (
+	);
+	Outlets = (
+	    delegate,
+	    window
+	);
+	Super = NSView;
+    };
+    WMRecyclerContentsViewerController = {
+	Actions = (
+	    "fileMatrixClicked:"
+	);
+	Outlets = (
+	    filesIconView,
+	    window,
+	    scrollView
+	);
+	Super = NSObject;
+    };
+}

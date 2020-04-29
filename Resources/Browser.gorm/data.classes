@@ -1,0 +1,36 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "browserClicked:",
+	    "fileWellClicked:",
+	    "renameSelectedFile:",
+	    "scrollButtonPressed:"
+	);
+	Super = NSObject;
+    };
+    WMBrowserViewerController = {
+	Actions = (
+	    "scrollButtonPressed:",
+	    "browserClicked:",
+	    "renameSelectedFile:",
+	    "fileWellClicked:"
+	);
+	Outlets = (
+	    browser,
+	    fileNameLabel,
+	    fileWell,
+	    scrollButtons,
+	    window
+	);
+	Super = NSObject;
+    };
+    WMFileWell = {
+	Actions = (
+	);
+	Outlets = (
+	    delegate
+	);
+	Super = NSImageView;
+    };
+}

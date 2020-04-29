@@ -1,0 +1,25 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "buttonPressed:"
+	);
+	Super = NSObject;
+    };
+    WMIconGridPanelController = {
+	Actions = (
+	    "buttonPressed:"
+	);
+	Outlets = (
+	    leftOfFirstColumnTextField,
+	    leftOfSecondColumnTextField,
+	    linesInNamesTextField,
+	    window,
+	    speceBetweenRowsTextField,
+	    topOfFirstColumnTextField,
+	    topOfSecondColumnTextField,
+	    widthOfNameTextField
+	);
+	Super = NSObject;
+    };
+}

@@ -1,0 +1,27 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "okButtonPressed:"
+	);
+	Super = NSObject;
+    };
+    WMFileInfoPanelController = {
+	Actions = (
+	    "okButtonPressed:"
+	);
+	Outlets = (
+	    associatedApplicationsTextField,
+	    fileSizeTextField,
+	    linkToTextField,
+	    locationTextField,
+	    modificationDateTextField,
+	    window,
+	    ownerTextField,
+	    panelTitleTextField,
+	    hiddenCloseButton,
+	    groupTextField
+	);
+	Super = NSObject;
+    };
+}

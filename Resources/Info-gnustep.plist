@@ -1,0 +1,9 @@
+{
+    ApplicationName = WM;
+    GSMainMarkupFile = "";
+    NOTE = "Automatically generated, do not edit!";
+    NSExecutable = WM;
+    NSIcon = "WM.tiff";
+    NSMainNibFile = "WM.gorm";
+    NSPrincipalClass = NSApplication;
+}

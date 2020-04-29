@@ -1,0 +1,43 @@
+{
+    "## Comment" = "Do NOT change this file, Gorm maintains it";
+    FirstResponder = {
+	Actions = (
+	    "browserClicked:",
+	    "duplicateSelectedFile:",
+	    "newDirectory:",
+	    "openDirectory:",
+	    "orderFrontFileInfoPanel:",
+	    "orderFrontFilePermissionsPanel:",
+	    "refreshWindow:",
+	    "undoRenameSelectedFile:"
+	);
+	Super = NSObject;
+    };
+    WMAppDelegate = {
+	Actions = (
+	    "orderFrontInfoPanel:",
+	    "emptyRecycler:",
+	    "orderFrontConsole:",
+	    "orderFrontIconGridPanel:"
+	);
+	Outlets = (
+	);
+	Super = NSObject;
+    };
+    WMBrowserViewerController = {
+	Actions = (
+	    "browserClicked:",
+	    "open:",
+	    "openDirectory:",
+	    "orderFrontFileInfoPanel:",
+	    "orderFrontFilePermissionsPanel:",
+	    "newDirectory:",
+	    "refreshWindow:",
+	    "duplicateSelectedFile:",
+	    "undoRenameSelectedFile:"
+	);
+	Outlets = (
+	);
+	Super = NSObject;
+    };
+}
