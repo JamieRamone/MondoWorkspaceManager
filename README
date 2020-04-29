@@ -181,7 +181,7 @@ them into either component. while dragging over either one, the icon will spin. 
 dot in the center. This indicates that they're being moved into the recycler. Once that operation finishes and the files were moved,
 it'll show a larger dot indicating that there are files in the recycler. As far as the window's concerned it'll show the new file(s).
 
-You can restore files by dragging them from the window and into a browser viewr window. To do this you must first select them. There 
+You can restore files by dragging them from the window and into a browser viewer window. To do this you must first select them. There
 are two ways to do this: clicking on an icon to select individual files, or dragging a rectangle around several icons to select more 
 than one. Then you can procede to drag the icon(s) out. Just like between file wells, you can use keyboard modifiers to make copies of 
 or links into the ones in the recycler. And just like in the file well dragging case, moving the files is the default action.
