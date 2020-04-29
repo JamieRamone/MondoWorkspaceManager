@@ -1,0 +1,7 @@
+{
+	ApplicationName = WM;
+	NSExecutable = WM;
+	NSMainNibFile = WM.gorm;
+	NSPrincipalClass = NSApplication;
+	NSIcon = WM.tiff;
+}

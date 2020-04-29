@@ -1,0 +1,201 @@
+﻿						    Mondo Workspace Manager
+
+So what is this shit?
+
+This application is a replica of the NeXT Workspace Manager, for the versions 0.8 and 0.9 of their operating system. It has most of
+the same functionality, including:
+
+- Console window, to see diagnostics messages.
+
+- Browser viewer windows, to navigate thru the file system.
+
+- Drag & drop handleing of files, including moving, copying, and linking.
+
+- A recycler in a separate app icon.
+
+It does differ from the original is several ways. First and most obvious (to those that ever used or at least saw the original) is
+the icons. This app uses modern icon set from NEXTSTEP 3.3, so prettier home icon, recycler instead of black hole, etc. It's also
+limited to a browser viewer for general file management and an icon view for the recycler, that's it.
+
+The icon view for the recycler while fully functional is rather rigid, only allowing dropping icons in it, and dragging them out,
+but no dragging within: it re-orders the icons alphabtically, left-to-right, top-to-bottom, creating a new row when the edge of the
+window was reached.
+
+The protection panel difers quite a bit in that it displays the current protection of the file, showing "On" or "Off" instead of
+showing the string "No Change" on the buttons. The File Info panel also differs slightly in that it allows editing of the "Link To:"
+field whereas the original did not, and it doesn't show the permissions (redundant, as it's already in the protection panel). But
+you CAN still close it by clickingon any non-editable field :-)
+
+There's no volume/external media management, but that's OK as this was also absent on the original and the machine it's made for has
+no external drives (read below). Also note that there's no included task management, you have to rely on ps, top, kill, and xkill
+for this purpose.
+
+The impetus for making it was that the development environment for building my games and related tools lacked such a tool and I was
+mainly working on the teminal application from the NextSpace project <github.com/trunkmaster/nextspace> and the Midnight Commander
+file manager for UNIXish systems comand line.
+
+I'm personally OK working like this. However, I had decided some time ago that the whole operating system I built for development
+would be given more public role. I wouldn't be distributing it per se but rather put up the instructions to build it from the
+publicly available sources, and only host the source for my own tools. This is just perfect as it derives from (a heavily modified)
+LFS 9.0 anyway <www.linuxfromscratch.org> and makes hosting it easier as all I need to keep in my site is the source code for my own
+tools. The problem is that not everyone would be OK with using a command line tool, stylish as it is, on a GUI.
+
+I looked around and contemplated my options. There was GWorkspace, but that's a dumpster fire: mess of contradictory UI paradigms
+(spatial vs. single-window file management, desktop AND dock AND shelf AND file manager), a mess of no-cohesive components (recycler
+app with its own menu that can take the focus away from the main app a "desktop" that could be turned on and off), unneeded features
+that serve no purpose and make it look more cluttered (icons in the browser), and so on and so forth...
+
+Then there's NextSpace itself. It's much closer to the NEXTSTEP 3.3 overall experience, using a good chunk of the WindowMaker window
+manager for the workspace itself and adding window accessories (title bar, borders, icon and miniwindows, etc.), a WM.app that does
+look right from the screenshots I've seen, a HIGHLY improved terminal, and much more. But it was built for RedHat, Objc2, and not
+easily coaxable to be used in an LFS-derived, ObjC development environment.
+
+This left me with the final option: build my own app for this purpose. Now what specifically is this purpose? It would have to allow
+for file management, manage applications (i.e start, stop, and activate) and processes, and volume management (i.e. mounting and
+unmounting internal secondary memory volumes and removable media), and session management, as in logging out via the app. It would
+take quite a hile to implementa all those things, however I COULD get away with implementing at least file and session management
+and add some, if not all, of the other features later on down the line.
+
+It took me a litte over two weeks but I got a fully functional file manager, complete with console and recycler. This NEXTSTEP 0.8
+overall feel was chosen as it's mostly just a file manager, as session and volume management were barely existent and app management
+wasn't really handled by WM.app but by workspace. Here, it's actually handled by WindowMaker. And as far as session management it
+just sends a term signal to its parent, which is WindowMaker, just before terminating itself.
+
+Now, using this application, gamescrafts can work on their code in e.g. TextEdit, compile things via gcc on the command line using
+Terminal, and shuffle around the files in this app, even starting them from it. Hopefully it'll provide a comfortable enough
+working/development environment for other users of the system so as to attract more or at least retain users as I finish it up in
+the future.
+
+So how do you install this shit?
+
+This app depends on the GNUstep runtime/development environment which, if you've built the Mondo Developement Environment, you
+already have. Otherwise, get those components first. Specifically, you need gnustep-make 2.7.0, gnustep-base (FoundationKit) 1.26.0,
+gnustep-gui (AppKit) 0.27.0, and gnustep-back 0.27.0. Follow the instructions provided with each one and install them in that order.
+
+Once that dependency is met, you can procede to unpack it by issuing 'xz -d < MondoWorkspace-1.0.tar.xz | tar xv' in a command line
+prompt, within the same directory that the file MondoWorkspace-1.0.tar.xz is located in and then 'cd MondoWorkspace-1.0'. You don't
+have to even be running the X Window System do do this.
+
+Then you can build it by issuing 'make' and then install it by issuing 'make install'. You can string them together like this: 'make
+&& make install'. This way, if running make fails, it won't procede to try to install it. If all goes well it'll install at
+'/aux/lib/GNUstep/WM.app'. This is the default installation directory for it in the Mondo Development Environment, but if installing
+elsewhere you'll have to manually override it by providing it to make when installing via the GNUSTEP_INSTALLATION_DIR variable. So
+if you want to install it in e.g. '/usr/local/WM.app' (might be a more appropriate location for most other distros) you'd type:
+'make GNUSTEP_INSTALLATION_DIR=/usr/local install' instead.
+
+Finally, you'd  want to start it to check that it's working properly. To do this issue 'openapp /aux/lib/GNUstep/WM -staging' at the
+command line. If you installed it anywhere else change the '/aux/lib/GNUstep' part of the command for your installation directory.
+If all's well it should start up fine, and you should see the menu window at the top left corner of wour screen (the one titled 'WM
+1.0', one browser window close by showing the contents of your home directory, and two app icons (two little square tiles). The
+icons are for this app and the recycler. You can quit the app by clicking on the menu entry labeled 'Log out' (don't worry, it wont
+log you out).
+
+As a finishing touch, if running WindowMaker, you can drag both icons to the dock before quitting. Then, after you quit, open the
+settings panel for each one and change the line for 'Application path and arguments' to read 'openapp /aux/lib/GNUstep/WM -staging'
+for WM, or just 'openapp /aux/lib/GNUstep/WM' if you wish to logout via the menu entry. And for the Recycler cange it to a single
+space i.e. ' '. You could also set WM to start with WindowMaker by ticking the first checkbox, the one labeled "Start when Window
+Maker is started". Then click "OK" on both and your good to go.
+
+So how do you use this shit?
+
+You start off with one browser viewer window. The majority of the window is taken up by a UI control calle a "hierarchical browser",
+or just browser as a shorthand. it consists of a series of columns side-by-side, each one displaying the full directory listing for
+each component of a path. It also hilights the entry for any path component in the preceding coloumn (the one to the left), except
+for the first one of course. So if the path to a file is '/A/B/C/d', you'll see the first column listing the contents of '/A' with
+the entry titled 'B' highlighted, the next column to the right shows the contents of '/A/B' with the entry title 'C' hilighted, the
+next one showing the contents of 'A/B/C' with the entry for 'd' hilighted.
+
+You can also select multiple files by dragging the mouse across several entries in a column. This will cause them to become
+hilighted. You can even extend the selection by clicking on another entry, or drag other entries, while pressing the 'Shift' key.
+These other entries need not even be directly before or after the inital selection i.e. you can make a disjointed selection by
+dragging.
+
+By clicking on the browser you can change the path and thus, the selected file. This, of course, implies clicking on sn entry
+itself. Clicking on an empty column or other part does nothing. When you click on an entry different that the currently hilighted
+one that entry gets hilighted, the one that was hilighted gets un-hilighted if it was in the same column, any non-empty columns to
+the right get cleared, and the one immediately to the right of the column with the selected entry gets loaded with the listing for
+that entry if it was a directory (it remains empty if it's a regular file).
+
+There are two buttons to the left for scrolling the browser if the amount of columns becomes larger than the vieable amount, four
+initially. While there's less path components than visible columns they're disabled. When the total amount of columns becomes larger
+they get enabled as needed to indicate which way you can actually scroll it i.e. if the browser is completely scrolled left only the
+bottom one get's enabled, if completely to the right only the top one is enabled and if neithe fully to the left or fully to the
+right, both are enabled.
+
+On the right side of the window is the file well. It displays an icon for the selected file (the right-most hilighted entry in the
+browser), which can be dragged out. This is th main means of manupulating the files. With this control you can drag the the file to
+a well in a different window and, depending on which keyboard modifier you press, you can: move it, copy it, and/or make a symbolic
+link to the file in the destination. It also displays a special icon for when multiple files are selected, and dragging this icon
+applies the same operations to all the files in the selection.
+
+Finally, you can open files and applications by double-clicking on their entry in the browser. Obviously, you can't open a selection
+of multiple files, but you can drag them into the app icon of an app that can understand their type from the file well.
+
+Just below the file well is the file name label which not only displays the selected file's name, but also allows renaming it. You
+can do this by clicking on it, where you'll notice a text editing blinking cursor will appear, and then procede to type in new
+characters into the file name (or delete any, or both). When youre done, you can commit this change by pressing 'Enter'. If you
+click on any other control while editing, the name will reset itself.
+
+In the submenu titled "Window" there are aditional operations on selected files which can't be performed from the selected file(s).
+The first entry opens files just like the bouble-clicking of the browser does. However you can open multiple files at once from
+here, even launching the relevant app. This way you don't have to depend on the underlying window manager's assistance, which may
+not be there, nor having to manually open it yourself in this case.
+
+The second entry, "Open directory" allows you to open a new browser window displaying the same selected file as the one on the
+current main window. This allows you to have multiple browser windows to use as target/destination for drag and drop operations,
+something that can't be done with a single window.
+
+Next is "Protect..." entry. This one brings up the file permission panel for the given file (currently, only single file selections
+are supported). Here you can change the UNIX permissions on said file, with the current protection bits displayed when the panel is
+opened as a matrix of button titled "On" or "Off".
+
+The next entry is called "New directory" and does just that, creates a new directory in the current one if the selected file is one.
+After creating it, it'll be automatically selected.
+
+Then there's the "More info" entry, which brings up a panel displaying the metadata for the selected file. This includes things like
+the path of the directory that lists it,last modification date, size, group, owner, aplication(s) that can open it, and, if it's a
+symbolic link, the file it points to. In the last case this field is editable so you can alter it. Pressing on the OK button, or any
+text field, or label, closes the panel.
+
+The last two apply to all windows: miniaturize and close, and do pretty much what they say: miniaturize and close the focused window
+respectivly.
+
+Note that some of these entrie apply only to directories and others to non-directory files. They will be appropriately enabled or
+disabled depending on the type of the selected file in the focused window.
+
+In the "Edit" menu, along with the usual suspects (cut, copy, paste, etc.) there's another file maipulation option called
+"Duplicate". As it's name suggests, it duplicates the given file in the directory it's listed under, prepending "Copy_of_" to its
+name.
+
+Another menu that's unique to this app is the "Utilities" menu. With the first entry, "Destroy Deleted Files", you can empty the
+recycler. This action deletes files for good. The next one, "Icon Grid...", brings up the icon grid settings panel. This panel is used
+to configure the default (and only, for the moment) icon placement settings for icon views. This currently applies only to the
+recycler. And the last one, "Console", well...brings up the system console i.e. the window where applications log status messages.
+
+The final aspect of this application you should know is how to work with the recycler and how to delete files. The recycler has two 
+components: the recycler icon and the recycler window. The recycler window can be closed at any time, and be brought back to the 
+screen by double-clicking the icon.
+
+To throw away files you no longer need, but may want back later on, you drag 
+them into either component. while dragging over either one, the icon will spin. Once you drop the file(s) it'll stop and show a small 
+dot in the center. This indicates that they're being moved into the recycler. Once that operation finishes and the files were moved,
+it'll show a larger dot indicating that there are files in the recycler. As far as the window's concerned it'll show the new file(s).
+
+You can restore files by dragging them from the window and into a browser viewr window. To do this you must first select them. There 
+are two ways to do this: clicking on an icon to select individual files, or dragging a rectangle around several icons to select more 
+than one. Then you can procede to drag the icon(s) out. Just like between file wells, you can use keyboard modifiers to make copies of 
+or links into the ones in the recycler. And just like in the file well dragging case, moving the files is the default action.
+
+There, that's how you use it.
+
+Wait, how are you licensing this shit?
+
+This project is licensed under the terms of the third edition of the GNU General Public License. Under these terms you may use it
+however you please, make any number of copies, modify it, and redistribute it, modified or not, without having to ask permission.
+It also prohibits you from re-license it, so any modified copies you distribute are licensed under the same terms, and you HAVE to
+make the source code INCLUDING YOUR MODIFICATIONS available to those you give it away to. You of cours also have access to the
+initial source code, the one I provide as the projects author.
+
+Thats some kewl shit!
+
+I know, right?

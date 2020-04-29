@@ -1,0 +1,43 @@
+####################################################################################################################################
+#
+#	GNUmakefile.preamble
+#
+#	This file is an part of the Mondo Workspace Manager.
+#
+#	Copyright (C) 2020 Mondo Megagames.
+# 	Author: Jamie Ramone <sancombru@gmail.com>
+#	Date: 20-4-2020
+#
+# This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with this program. If not, see
+# <http://www.gnu.org/licenses/>
+#
+####################################################################################################################################
+
+# Additional flags to pass to the preprocessor
+ADDITIONAL_CPPFLAGS += 
+
+# Additional flags to pass to Objective C compiler
+ADDITIONAL_OBJCFLAGS += -Os -fomit-frame-pointer -fno-stack-protector -m64
+
+# Additional flags to pass to C compiler
+ADDITIONAL_CFLAGS += -Os -fomit-frame-pointer -fno-stack-protector -m64
+
+# Additional flags to pass to the linker
+ADDITIONAL_LDFLAGS +=
+
+# Additional include directories the compiler should search
+ADDITIONAL_INCLUDE_DIRS += 
+
+# Additional library directories the linker should search
+ADDITIONAL_LIB_DIRS += 
+
+# Additional GUI libraries to link
+ADDITIONAL_GUI_LIBS += 
+
+ADITIONAL_OPT_FLAGS += -Os
