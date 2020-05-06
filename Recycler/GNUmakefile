@@ -24,6 +24,7 @@ include ../uncommon.make
 
 APP_NAME = Recycler
 
+Recycler_STANDARD_INSTALL=no
 Recycler_RESOURCE_FILES = $(wildcard Resources/*[^~].*)
 Recycler_HEADER_FILES = $(wildcard *.h)
 Recycler_OBJC_FILES = $(wildcard *.m)
